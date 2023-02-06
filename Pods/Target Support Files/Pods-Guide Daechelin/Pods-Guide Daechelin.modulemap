@@ -1,0 +1,6 @@
+framework module Pods_Guide_Daechelin {
+  umbrella header "Pods-Guide Daechelin-umbrella.h"
+
+  export *
+  module * { export * }
+}
