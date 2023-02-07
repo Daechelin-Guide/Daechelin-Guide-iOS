@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52844E262991D18200621E67 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E252991D18200621E67 /* MainVC.swift */; };
+		52844E292991D5DA00621E67 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E282991D5DA00621E67 /* MainModel.swift */; };
+		52844E2B2991D94100621E67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E2A2991D94100621E67 /* extension.swift */; };
 		52EA39E62991C9CB006D5738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA39E52991C9CB006D5738 /* AppDelegate.swift */; };
 		52EA39E82991C9CB006D5738 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA39E72991C9CB006D5738 /* SceneDelegate.swift */; };
-		52EA39EA2991C9CB006D5738 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA39E92991C9CB006D5738 /* ViewController.swift */; };
 		52EA39EF2991C9CC006D5738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52EA39EE2991C9CC006D5738 /* Assets.xcassets */; };
 		52EA39F22991C9CC006D5738 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EA39F02991C9CC006D5738 /* LaunchScreen.storyboard */; };
 		A6B95CDA73A9E13BF354AEFE /* Pods_Guide_Daechelin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92BBE2B8AE234EC4975A78C /* Pods_Guide_Daechelin.framework */; };
@@ -18,10 +20,12 @@
 /* Begin PBXFileReference section */
 		21D70D43A147EB6369910DD2 /* Pods-Guide Daechelin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guide Daechelin.debug.xcconfig"; path = "Target Support Files/Pods-Guide Daechelin/Pods-Guide Daechelin.debug.xcconfig"; sourceTree = "<group>"; };
 		2A7E28648AA8B4483A6BE836 /* Pods-Guide Daechelin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guide Daechelin.release.xcconfig"; path = "Target Support Files/Pods-Guide Daechelin/Pods-Guide Daechelin.release.xcconfig"; sourceTree = "<group>"; };
+		52844E252991D18200621E67 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		52844E282991D5DA00621E67 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		52844E2A2991D94100621E67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		52EA39E22991C9CB006D5738 /* Guide Daechelin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guide Daechelin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EA39E52991C9CB006D5738 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52EA39E72991C9CB006D5738 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52EA39E92991C9CB006D5738 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52EA39EE2991C9CC006D5738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52EA39F12991C9CC006D5738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52EA39F32991C9CC006D5738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +52,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		52844E232991D0D300621E67 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				52844E272991D5BD00621E67 /* Main */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		52844E242991D0DB00621E67 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				52EA39E72991C9CB006D5738 /* SceneDelegate.swift */,
+				52EA39E52991C9CB006D5738 /* AppDelegate.swift */,
+				52844E2A2991D94100621E67 /* extension.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		52844E272991D5BD00621E67 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52844E252991D18200621E67 /* MainVC.swift */,
+				52844E282991D5DA00621E67 /* MainModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		52EA39D92991C9CB006D5738 = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +100,8 @@
 		52EA39E42991C9CB006D5738 /* Guide Daechelin */ = {
 			isa = PBXGroup;
 			children = (
-				52EA39E52991C9CB006D5738 /* AppDelegate.swift */,
-				52EA39E72991C9CB006D5738 /* SceneDelegate.swift */,
-				52EA39E92991C9CB006D5738 /* ViewController.swift */,
+				52844E242991D0DB00621E67 /* Application */,
+				52844E232991D0D300621E67 /* Presentation */,
 				52EA39EE2991C9CC006D5738 /* Assets.xcassets */,
 				52EA39F02991C9CC006D5738 /* LaunchScreen.storyboard */,
 				52EA39F32991C9CC006D5738 /* Info.plist */,
@@ -85,7 +115,6 @@
 				21D70D43A147EB6369910DD2 /* Pods-Guide Daechelin.debug.xcconfig */,
 				2A7E28648AA8B4483A6BE836 /* Pods-Guide Daechelin.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -203,7 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52EA39EA2991C9CB006D5738 /* ViewController.swift in Sources */,
+				52844E292991D5DA00621E67 /* MainModel.swift in Sources */,
+				52844E262991D18200621E67 /* MainVC.swift in Sources */,
+				52844E2B2991D94100621E67 /* extension.swift in Sources */,
 				52EA39E62991C9CB006D5738 /* AppDelegate.swift in Sources */,
 				52EA39E82991C9CB006D5738 /* SceneDelegate.swift in Sources */,
 			);
