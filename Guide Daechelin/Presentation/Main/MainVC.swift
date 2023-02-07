@@ -45,7 +45,7 @@ class MainVC: UIViewController {
     }
     
     private let breakfastImage = UIImageView().then {
-        $0.image = UIImage(named: "breakfast")
+        $0.image = UIImage(named: "break")
         $0.contentMode = .scaleAspectFit
     }
     
@@ -78,7 +78,7 @@ class MainVC: UIViewController {
         $0.numberOfLines = 4
     }
     
-    //점심
+    //저녁
     private let dinnerButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
@@ -223,7 +223,7 @@ class MainVC: UIViewController {
             $0.top.equalTo(logo.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
-            $0.bottom.equalTo(dateButton.snp.top).offset(60)
+            $0.bottom.equalTo(dateButton.snp.top).offset(40)
         }
         
         dateLabel.snp.makeConstraints {
@@ -249,7 +249,7 @@ class MainVC: UIViewController {
         }
         
         breakfastImage.snp.makeConstraints {
-            $0.top.equalTo(morningImage.snp.bottom).offset(10)
+            $0.top.equalTo(morningImage.snp.bottom)
             $0.left.equalTo(breakfastButton.snp.left).offset(20)
             $0.right.equalTo(breakfastImage.snp.left).offset(40)
             $0.bottom.equalTo(breakfastImage.snp.top).offset(26)
@@ -320,6 +320,10 @@ class MainVC: UIViewController {
             $0.bottom.equalTo(dinnerButton.snp.bottom).offset(-30)
         }
         
+        let backBarButtonItem = UIBarButtonItem(title: "급식상세정보", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
     }
     
 }
+

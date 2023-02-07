@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.6.2)
+  - Cosmos (23.0.0)
   - FSCalendar (2.8.4)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
@@ -9,6 +10,7 @@ PODS:
   - Then (3.0.0)
 
 DEPENDENCIES:
+  - Cosmos
   - FSCalendar
   - Moya
   - SnapKit (~> 5.0.0)
@@ -17,6 +19,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Cosmos
     - FSCalendar
     - Moya
     - SnapKit
@@ -24,11 +27,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 9a1c5a38fc068d86fa61f31e9aa6f53e326da2b4
+PODFILE CHECKSUM: a12be7d8fe4e31379c55cac784b94f6b05eebd5e
 
 COCOAPODS: 1.11.3

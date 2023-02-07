@@ -17,3 +17,15 @@ struct Data: Decodable {
     var dinner: String?
     var lunch: String?
 }
+
+struct MenuData: Decodable {
+    var breakfast: String?
+    var lunch: String?
+    var dinner: String?
+}
+
+struct StarData: Decodable {
+    var star: Int?
+    var menu: String?
+    var date: String?
+}

@@ -8,5 +8,5 @@
 import Foundation
 
 struct Meal: Decodable {
-    var meal: String?
+    var meal: String
 }
