@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 class MealVC: UIViewController {
    
@@ -17,7 +18,7 @@ class MealVC: UIViewController {
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "2월 7일 (화)"
+        $0.text = "2023년 02월 07일 "
         $0.font = .systemFont(ofSize: 22, weight: .medium)
         $0.textAlignment = .center
     }
@@ -46,7 +47,32 @@ class MealVC: UIViewController {
         
         view.backgroundColor = .white
         
+        getMeal()
         setup()
+    }
+    
+    func getMeal() {
+        AF.request("\(url)/\(requestTime)",
+                   method: .get,
+                   parameters: [
+                    "date": requestDate
+                   ],
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type": "application/json"]
+        ) { $0.timeoutInterval = 5 }
+            .validate()
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    guard let value = response.value else { return }
+                    guard let result = try? JSONDecoder().decode(Meal.self, from: value) else { return }
+                    
+                    print(result)
+                    
+                case .failure:
+                    print("failed")
+                }
+            }
     }
     
     func setup() {

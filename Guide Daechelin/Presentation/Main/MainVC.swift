@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 class MainVC: UIViewController {
+
+    var date = Date()
     
     private let logo = UILabel().then {
         $0.text = "대슐랭 가이드"
@@ -17,22 +20,23 @@ class MainVC: UIViewController {
     }
     
     //날짜
-    private let backView = UIView().then {
+    private let dateButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
+        $0.addTarget(self, action: #selector(presentCalendar), for: .touchUpInside)
     }
     
-    private let dateButton = UIButton().then {
-        $0.setTitle("2023/02/07 (화)", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.backgroundColor = .clear
+    private let dateLabel = UILabel().then {
+        $0.text = "2023년 2월 12일"
+        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.textAlignment = .center
     }
     
     //아침
     private let breakfastButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
-        $0.addTarget(self, action: #selector(test), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(getBreakfast), for: .touchUpInside)
     }
     
     private let morningImage = UIImageView().then {
@@ -55,7 +59,7 @@ class MainVC: UIViewController {
     private let lunchButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
-        $0.addTarget(self, action: #selector(test), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(getLunch), for: .touchUpInside)
     }
     
     private let afternoonImage = UIImageView().then {
@@ -78,7 +82,7 @@ class MainVC: UIViewController {
     private let dinnerButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
-        $0.addTarget(self, action: #selector(test), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(getDinner), for: .touchUpInside)
     }
     
     private let nightImage = UIImageView().then {
@@ -98,24 +102,99 @@ class MainVC: UIViewController {
     }
     
     //action
-    @objc func test() {
+    @objc func getBreakfast() {
         let pushVC = MealVC()
+        requestTime = "break"
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
+    
+    @objc func getLunch() {
+        let pushVC = MealVC()
+        requestTime = "lunch"
+        self.navigationController?.pushViewController(pushVC, animated: true)
+    }
+    
+    @objc func getDinner() {
+        let pushVC = MealVC()
+        requestTime = "dinner"
+        self.navigationController?.pushViewController(pushVC, animated: true)
+    }
+    
+    @objc func presentCalendar() {
+        let pushVC = CalendarVC()
+        pushVC.modalPresentationStyle = .fullScreen
+        self.present(pushVC, animated: true)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getNowDate()
+        
         view.backgroundColor = .systemBackground
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getMeal()
+    }
+    
+    func getNowDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        requestDate = dateFormatter.string(from: date)
+    }
+    
+    func getMeal() {
+        let components = requestDate.components(separatedBy: "-")
+        AF.request("\(url)/menu",
+                   method: .get,
+                   parameters: [
+                    "year": components[0],
+                    "month": components[1],
+                    "day": components[2]
+                   ],
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type": "application/json"]
+        ) { $0.timeoutInterval = 5 }
+            .validate()
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    guard let value = response.value else { return }
+                    guard let result = try? JSONDecoder().decode(MealData.self, from: value) else { return }
+                    
+                    let date = result.data.date.components(separatedBy: "-")
+
+                    var breakfast = result.data.breakfast
+                    var lunch = result.data.lunch
+                    var dinner = result.data.dinner
+                    
+                    if breakfast == nil { breakfast = "없음" }
+                    if lunch == nil { lunch = "없음" }
+                    if dinner == nil { dinner = "없음" }
+
+                    
+                    self.dateLabel.text = "\(date[0])년 \(date[1])월 \(date[2])일"
+                    
+                    self.breakfastMenu.text = "\(breakfast!)"
+                    self.lunchMenu.text = "\(lunch!)"
+                    self.dinnerMenu.text = "\(dinner!)"
+                    
+                case .failure:
+                    print("failed")
+                }
+            }
     }
     
     func setup() {
         
         [
             logo,
-            backView,
             dateButton,
+            dateLabel,
             
             breakfastButton,
             morningImage,
@@ -140,23 +219,23 @@ class MainVC: UIViewController {
             $0.bottom.equalTo(logo.snp.top).offset(20)
         }
         
-        backView.snp.makeConstraints {
+        dateButton.snp.makeConstraints {
             $0.top.equalTo(logo.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
-            $0.bottom.equalTo(backView.snp.top).offset(60)
+            $0.bottom.equalTo(dateButton.snp.top).offset(60)
         }
         
-        dateButton.snp.makeConstraints {
-            $0.top.equalTo(backView.snp.top).offset(10)
-            $0.left.equalToSuperview().offset(100)
-            $0.right.equalToSuperview().offset(-100)
-            $0.bottom.equalTo(backView.snp.bottom).offset(-10)
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(dateButton.snp.top).offset(10)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalTo(dateButton.snp.bottom).offset(-10)
         }
         
         //breakfast
         breakfastButton.snp.makeConstraints {
-            $0.top.equalTo(backView.snp.bottom).offset(20)
+            $0.top.equalTo(dateButton.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
             $0.bottom.equalTo(breakfastButton.snp.top).offset(120)
@@ -242,5 +321,5 @@ class MainVC: UIViewController {
         }
         
     }
+    
 }
-

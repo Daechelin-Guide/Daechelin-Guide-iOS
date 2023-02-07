@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		525A370229920B1B008AC1B7 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A370129920B1B008AC1B7 /* CalendarVC.swift */; };
+		525A370529923413008AC1B7 /* url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A370429923413008AC1B7 /* url.swift */; };
+		525A370729925498008AC1B7 /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A370629925498008AC1B7 /* MealModel.swift */; };
 		52844E262991D18200621E67 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E252991D18200621E67 /* MainVC.swift */; };
 		52844E292991D5DA00621E67 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E282991D5DA00621E67 /* MainModel.swift */; };
 		52844E2B2991D94100621E67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E2A2991D94100621E67 /* extension.swift */; };
@@ -23,6 +25,8 @@
 		21D70D43A147EB6369910DD2 /* Pods-Guide Daechelin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guide Daechelin.debug.xcconfig"; path = "Target Support Files/Pods-Guide Daechelin/Pods-Guide Daechelin.debug.xcconfig"; sourceTree = "<group>"; };
 		2A7E28648AA8B4483A6BE836 /* Pods-Guide Daechelin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guide Daechelin.release.xcconfig"; path = "Target Support Files/Pods-Guide Daechelin/Pods-Guide Daechelin.release.xcconfig"; sourceTree = "<group>"; };
 		525A370129920B1B008AC1B7 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		525A370429923413008AC1B7 /* url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = url.swift; sourceTree = "<group>"; };
+		525A370629925498008AC1B7 /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		52844E252991D18200621E67 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		52844E282991D5DA00621E67 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		52844E2A2991D94100621E67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 		52844E232991D0D300621E67 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				525A370429923413008AC1B7 /* url.swift */,
 				52844E272991D5BD00621E67 /* Main */,
 				525A370329920B1F008AC1B7 /* Calender */,
 				52844E2E2991ED3700621E67 /* Mael */,
@@ -97,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				52844E2F2991ED5A00621E67 /* MealVC.swift */,
+				525A370629925498008AC1B7 /* MealModel.swift */,
 			);
 			path = Mael;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 				525A370229920B1B008AC1B7 /* CalendarVC.swift in Sources */,
 				52EA39E62991C9CB006D5738 /* AppDelegate.swift in Sources */,
 				52EA39E82991C9CB006D5738 /* SceneDelegate.swift in Sources */,
+				525A370729925498008AC1B7 /* MealModel.swift in Sources */,
+				525A370529923413008AC1B7 /* url.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
