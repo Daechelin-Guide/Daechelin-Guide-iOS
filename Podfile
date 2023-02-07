@@ -7,6 +7,8 @@ target 'Guide Daechelin' do
 
   # Pods for Guide Daechelin
   pod 'Then'
+  pod 'FSCalendar'
+  pod 'Moya'
 
   # layout
   pod 'SnapKit', '~> 5.0.0'
