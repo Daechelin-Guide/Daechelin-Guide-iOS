@@ -16,37 +16,50 @@ class MainVC: UIViewController {
     
     private let logo = UILabel().then {
         $0.text = "대슐랭 가이드"
-        $0.font = .systemFont(ofSize: 22, weight: .semibold)
+        $0.font = .systemFont(ofSize: 22, weight: .bold)
     }
     
     //날짜
     private let dateButton = UIButton().then {
-        $0.backgroundColor = .buttonColor
+        $0.backgroundColor = .clear
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(presentCalendar), for: .touchUpInside)
     }
     
     private let dateLabel = UILabel().then {
         $0.text = "2023년 2월 12일"
-        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.font = .systemFont(ofSize: 18, weight: .regular)
         $0.textAlignment = .center
     }
+    
+//    private let leftArrow = UIButton().then {
+//        $0.backgroundColor = .systemPink
+////        $0.setImage(UIImage(named: "arrow.left"), for: .normal)
+//        $0.addTarget(self, action: #selector(leftArrowAction), for: .touchUpInside)
+//    }
+//
+//    private let rightArrow = UIButton().then {
+//        $0.backgroundColor = .systemPink
+////        $0.setImage(UIImage(named: "arrow.right"), for: .normal)
+//        $0.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
+//    }
     
     //아침
     private let breakfastButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
+//        $0.layer.shadowOpacity = 0.1
+//        $0.layer.shadowColor = UIColor.black.cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.addTarget(self, action: #selector(getBreakfast), for: .touchUpInside)
     }
     
     private let morningImage = UIImageView().then {
         $0.image = UIImage(named: "morning")
-        $0.contentMode = .scaleAspectFit
     }
     
     private let breakfastImage = UIImageView().then {
         $0.image = UIImage(named: "break")
-        $0.contentMode = .scaleAspectFit
     }
     
     private let breakfastMenu = UILabel().then {
@@ -59,17 +72,18 @@ class MainVC: UIViewController {
     private let lunchButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
+//        $0.layer.shadowOpacity = 0.1
+//        $0.layer.shadowColor = UIColor.black.cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.addTarget(self, action: #selector(getLunch), for: .touchUpInside)
     }
     
     private let afternoonImage = UIImageView().then {
         $0.image = UIImage(named: "afternoon")
-        $0.contentMode = .scaleAspectFit
     }
     
     private let lunchImage = UIImageView().then {
         $0.image = UIImage(named: "lunch")
-        $0.contentMode = .scaleAspectFit
     }
     
     private let lunchMenu = UILabel().then {
@@ -82,17 +96,18 @@ class MainVC: UIViewController {
     private let dinnerButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
+//        $0.layer.shadowOpacity = 0.1
+//        $0.layer.shadowColor = UIColor.black.cgColor
+//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.addTarget(self, action: #selector(getDinner), for: .touchUpInside)
     }
     
     private let nightImage = UIImageView().then {
         $0.image = UIImage(named: "night")
-        $0.contentMode = .scaleAspectFit
     }
     
     private let dinnerImage = UIImageView().then {
         $0.image = UIImage(named: "dinner")
-        $0.contentMode = .scaleAspectFit
     }
     
     private let dinnerMenu = UILabel().then {
@@ -120,12 +135,24 @@ class MainVC: UIViewController {
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
     
+    //Calendar 관련 action
     @objc func presentCalendar() {
         let pushVC = CalendarVC()
         pushVC.modalPresentationStyle = .fullScreen
         self.present(pushVC, animated: true)
     }
     
+    @objc func leftArrowAction() {
+        let pushVC = CalendarVC()
+        pushVC.modalPresentationStyle = .fullScreen
+        self.present(pushVC, animated: true)
+    }
+    
+    @objc func rightArrowAction() {
+        let pushVC = CalendarVC()
+        pushVC.modalPresentationStyle = .fullScreen
+        self.present(pushVC, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,9 +199,9 @@ class MainVC: UIViewController {
                     var lunch = result.data.lunch
                     var dinner = result.data.dinner
                     
-                    if breakfast == nil { breakfast = "없음" }
-                    if lunch == nil { lunch = "없음" }
-                    if dinner == nil { dinner = "없음" }
+                    if breakfast == nil { breakfast = "조식이 없습니다." }
+                    if lunch == nil { lunch = "중식이 없습니다." }
+                    if dinner == nil { dinner = "석식이 없습니다." }
 
                     
                     self.dateLabel.text = "\(date[0])년 \(date[1])월 \(date[2])일"
@@ -195,6 +222,8 @@ class MainVC: UIViewController {
             logo,
             dateButton,
             dateLabel,
+//            leftArrow,
+//            rightArrow,
             
             breakfastButton,
             morningImage,
@@ -220,9 +249,9 @@ class MainVC: UIViewController {
         }
         
         dateButton.snp.makeConstraints {
-            $0.top.equalTo(logo.snp.bottom).offset(20)
-            $0.left.equalToSuperview().offset(16)
-            $0.right.equalToSuperview().offset(-16)
+            $0.top.equalTo(logo.snp.bottom).offset(10)
+            $0.left.equalToSuperview().offset(100)
+            $0.right.equalToSuperview().offset(-100)
             $0.bottom.equalTo(dateButton.snp.top).offset(40)
         }
         
@@ -233,9 +262,16 @@ class MainVC: UIViewController {
             $0.bottom.equalTo(dateButton.snp.bottom).offset(-10)
         }
         
+//        leftArrow.snp.makeConstraints {
+//            $0.top.equalTo(logo.snp.bottom).offset(10)
+//            $0.left.equalToSuperview()
+//            $0.right.equalTo(dateLabel.snp.left)
+//            $0.bottom.equalTo(dateButton.snp.top).offset(40)
+//        }
+        
         //breakfast
         breakfastButton.snp.makeConstraints {
-            $0.top.equalTo(dateButton.snp.bottom).offset(20)
+            $0.top.equalTo(dateButton.snp.bottom).offset(8)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
             $0.bottom.equalTo(breakfastButton.snp.top).offset(120)
@@ -245,13 +281,13 @@ class MainVC: UIViewController {
             $0.top.equalTo(breakfastButton.snp.top).offset(20)
             $0.left.equalTo(breakfastButton.snp.left).offset(20)
             $0.right.equalTo(morningImage.snp.left).offset(40)
-            $0.bottom.equalTo(morningImage.snp.top).offset(60)
+            $0.bottom.equalTo(breakfastButton.snp.top).offset(60)
         }
         
         breakfastImage.snp.makeConstraints {
-            $0.top.equalTo(morningImage.snp.bottom)
-            $0.left.equalTo(breakfastButton.snp.left).offset(20)
-            $0.right.equalTo(breakfastImage.snp.left).offset(40)
+            $0.top.equalTo(morningImage.snp.bottom).offset(10)
+            $0.left.equalTo(breakfastButton.snp.left).offset(16)
+            $0.right.equalTo(breakfastImage.snp.left).offset(48)
             $0.bottom.equalTo(breakfastImage.snp.top).offset(26)
         }
         
@@ -274,13 +310,13 @@ class MainVC: UIViewController {
             $0.top.equalTo(lunchButton.snp.top).offset(20)
             $0.left.equalTo(lunchButton.snp.left).offset(20)
             $0.right.equalTo(afternoonImage.snp.left).offset(40)
-            $0.bottom.equalTo(lunchButton.snp.bottom).offset(-60)
+            $0.bottom.equalTo(lunchButton.snp.top).offset(60)
         }
         
         lunchImage.snp.makeConstraints {
             $0.top.equalTo(afternoonImage.snp.bottom).offset(10)
-            $0.left.equalTo(lunchButton.snp.left).offset(20)
-            $0.right.equalTo(lunchImage.snp.left).offset(40)
+            $0.left.equalTo(lunchButton.snp.left).offset(16)
+            $0.right.equalTo(lunchImage.snp.left).offset(48)
             $0.bottom.equalTo(lunchImage.snp.top).offset(26)
         }
         
@@ -303,13 +339,13 @@ class MainVC: UIViewController {
             $0.top.equalTo(dinnerButton.snp.top).offset(20)
             $0.left.equalTo(dinnerButton.snp.left).offset(20)
             $0.right.equalTo(nightImage.snp.left).offset(40)
-            $0.bottom.equalTo(dinnerButton.snp.bottom).offset(-60)
+            $0.bottom.equalTo(dinnerButton.snp.top).offset(60)
         }
         
         dinnerImage.snp.makeConstraints {
             $0.top.equalTo(nightImage.snp.bottom).offset(10)
-            $0.left.equalTo(dinnerButton.snp.left).offset(20)
-            $0.right.equalTo(dinnerImage.snp.left).offset(40)
+            $0.left.equalTo(dinnerButton.snp.left).offset(16)
+            $0.right.equalTo(dinnerImage.snp.left).offset(48)
             $0.bottom.equalTo(dinnerImage.snp.top).offset(26)
         }
         
@@ -320,7 +356,7 @@ class MainVC: UIViewController {
             $0.bottom.equalTo(dinnerButton.snp.bottom).offset(-30)
         }
         
-        let backBarButtonItem = UIBarButtonItem(title: "급식상세정보", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "급식 상세 정보", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
     }

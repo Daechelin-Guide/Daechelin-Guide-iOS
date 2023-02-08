@@ -16,6 +16,7 @@ struct Data: Decodable {
     var breakfast: String?
     var dinner: String?
     var lunch: String?
+    var week: String?
 }
 
 struct MenuData: Decodable {
@@ -25,7 +26,16 @@ struct MenuData: Decodable {
 }
 
 struct StarData: Decodable {
-    var star: Int?
+    var star: Double?
     var menu: String?
     var date: String?
 }
+
+struct CommentData: Decodable {
+    var commentId: Int?
+    var message: String?
+    var date: String?
+    var menu: String?
+    var createdDate: String?
+}
+
