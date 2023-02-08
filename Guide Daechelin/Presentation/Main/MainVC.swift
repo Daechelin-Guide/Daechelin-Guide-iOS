@@ -203,8 +203,8 @@ class MainVC: UIViewController {
                     if lunch == nil { lunch = "중식이 없습니다." }
                     if dinner == nil { dinner = "석식이 없습니다." }
 
-                    
-                    self.dateLabel.text = "\(date[0])년 \(date[1])월 \(date[2])일"
+                    week = result.data.week!
+                    self.dateLabel.text = "\(week)"
                     
                     self.breakfastMenu.text = "\(breakfast!)"
                     self.lunchMenu.text = "\(lunch!)"

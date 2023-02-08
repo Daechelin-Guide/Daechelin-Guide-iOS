@@ -12,8 +12,10 @@ import Alamofire
 import Cosmos
 
 class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
+
     
     var comment:[CommentData] = []
+    var massege:[String] = []
     
     var menus:String = ""
     var star:Double = 0
@@ -29,7 +31,7 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "\(requestDate)"
+        $0.text = "\(week)"
         $0.font = .systemFont(ofSize: 20, weight: .medium)
         $0.textAlignment = .center
     }
@@ -41,7 +43,6 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     private let line = UIView().then {
         $0.backgroundColor = UIColor(red: 139/255, green: 139/255, blue: 139/255, alpha: 0.3)
-        
     }
     
     private let menu = UILabel().then {
@@ -62,16 +63,14 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         $0.separatorStyle = .none
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as! ReviewCell
-        cell.selectionStyle = .none
+    func GetMessage() {
         
-        cell.comment.text = "테스트"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        for row in comment {
+            if row.message != "" {
+                massege.append(row.message!)
+            }
+        }
+        print(massege)
     }
     
     @objc func presentReview() {
@@ -90,6 +89,18 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         getMeal()
         setup()
         
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as! ReviewCell
+        cell.selectionStyle = .none
+        
+        cell.comment.text = "\(massege[indexPath.row])"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return massege.count
     }
     
     func getMeal() {
@@ -158,6 +169,8 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                                     self.comment = result
                                     
                                     print("\(self.comment)")
+                                    self.GetMessage()
+                                    self.reviewTableView.reloadData()
                                     
                                 case .failure:
                                     print("댓글 실패")
@@ -213,6 +226,8 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                                     self.comment = result
                                     
                                     print("\(self.comment)")
+                                    self.GetMessage()
+                                    self.reviewTableView.reloadData()
                                     
                                 case .failure:
                                     print("댓글 실패")
@@ -267,6 +282,8 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                                     self.comment = result
                                     
                                     print("\(self.comment)")
+                                    self.GetMessage()
+                                    self.reviewTableView.reloadData()
                                     
                                 case .failure:
                                     print("댓글 실패")
@@ -312,8 +329,8 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(backView.snp.top).offset(10)
-            $0.left.equalToSuperview().offset(100)
-            $0.right.equalToSuperview().offset(-100)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
             $0.bottom.equalTo(dateLabel.snp.top).offset(24)
         }
         

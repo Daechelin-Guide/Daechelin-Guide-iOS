@@ -56,10 +56,10 @@ class ReviewCell: UITableViewCell {
         }
         
         userName.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(6)
+            $0.top.equalToSuperview().offset(8)
             $0.left.equalTo(userIcon.snp.right).offset(10)
             $0.right.equalToSuperview()
-            $0.bottom.equalTo(userName.snp.top).offset(20)
+            $0.bottom.equalTo(userName.snp.top).offset(14)
         }
         
         comment.snp.makeConstraints {
