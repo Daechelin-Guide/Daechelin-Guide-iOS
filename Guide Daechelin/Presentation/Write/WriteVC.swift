@@ -19,7 +19,7 @@ class WriteVC: UIViewController {
     
     var cosmos = CosmosView()
     
-    private let completButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(PopCheckAlert))
+    lazy var completButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(PopCheckAlert))
     
     private let commentTextView = UITextView().then {
         $0.text =  "리뷰를 작성해주세요."

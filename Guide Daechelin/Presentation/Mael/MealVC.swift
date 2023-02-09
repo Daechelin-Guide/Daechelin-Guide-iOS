@@ -52,7 +52,7 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         $0.numberOfLines = 8
     }
     
-    private let reviewButton = UIButton().then {
+    lazy var reviewButton = UIButton().then {
         $0.setImage(UIImage(named: "review"), for: .normal)
         $0.addTarget(self, action: #selector(presentReview), for: .touchUpInside)
     }

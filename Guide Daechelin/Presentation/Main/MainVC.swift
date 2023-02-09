@@ -11,46 +11,42 @@ import Then
 import Alamofire
 
 class MainVC: UIViewController {
-
-    var date = Date()
     
     private let logo = UILabel().then {
         $0.text = "대슐랭 가이드"
-        $0.font = .systemFont(ofSize: 22, weight: .bold)
+        $0.font = .systemFont(ofSize: 18, weight: .bold)
     }
     
     //날짜
-    private let dateButton = UIButton().then {
+    lazy var dateButton = UIButton().then {
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(presentCalendar), for: .touchUpInside)
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "2023년 2월 12일"
+        $0.text = "정보를 불러오는 중..."
         $0.font = .systemFont(ofSize: 18, weight: .regular)
         $0.textAlignment = .center
     }
     
-//    private let leftArrow = UIButton().then {
-//        $0.backgroundColor = .systemPink
-////        $0.setImage(UIImage(named: "arrow.left"), for: .normal)
-//        $0.addTarget(self, action: #selector(leftArrowAction), for: .touchUpInside)
-//    }
-//
-//    private let rightArrow = UIButton().then {
-//        $0.backgroundColor = .systemPink
-////        $0.setImage(UIImage(named: "arrow.right"), for: .normal)
-//        $0.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
-//    }
+    lazy var leftArrow = UIButton().then {
+        $0.setImage(UIImage(named: "arrow.left"), for: .normal)
+        $0.addTarget(self, action: #selector(leftArrowAction), for: .touchUpInside)
+    }
+
+    lazy var rightArrow = UIButton().then {
+        $0.setImage(UIImage(named: "arrow.right"), for: .normal)
+        $0.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
+    }
     
     //아침
-    private let breakfastButton = UIButton().then {
+    lazy var breakfastButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
-//        $0.layer.shadowOpacity = 0.1
-//        $0.layer.shadowColor = UIColor.black.cgColor
-//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.addTarget(self, action: #selector(getBreakfast), for: .touchUpInside)
     }
     
@@ -63,18 +59,18 @@ class MainVC: UIViewController {
     }
     
     private let breakfastMenu = UILabel().then {
-        $0.text = "*기장밥,닭개장,시금치무침,*통모짜돈까스+소스,배추김치,진한사과주스"
+        $0.text = "정보를 불러오는 중..."
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.numberOfLines = 4
     }
     
     //점심
-    private let lunchButton = UIButton().then {
+    lazy var lunchButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
-//        $0.layer.shadowOpacity = 0.1
-//        $0.layer.shadowColor = UIColor.black.cgColor
-//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.addTarget(self, action: #selector(getLunch), for: .touchUpInside)
     }
     
@@ -87,18 +83,18 @@ class MainVC: UIViewController {
     }
     
     private let lunchMenu = UILabel().then {
-        $0.text = "쇠고기야채죽,*모닝빵크래미샌드위치,나박김치,허쉬초코크런치시리얼+우유,바나나"
+        $0.text = "정보를 불러오는 중..."
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.numberOfLines = 4
     }
     
     //저녁
-    private let dinnerButton = UIButton().then {
+    lazy var dinnerButton = UIButton().then {
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
-//        $0.layer.shadowOpacity = 0.1
-//        $0.layer.shadowColor = UIColor.black.cgColor
-//        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.addTarget(self, action: #selector(getDinner), for: .touchUpInside)
     }
     
@@ -111,12 +107,37 @@ class MainVC: UIViewController {
     }
     
     private let dinnerMenu = UILabel().then {
-        $0.text = "*현미밥,돔베고기국수,진미채무침,새우또띠아쌈,깍두기,멜론"
+        $0.text = "정보를 불러오는 중..."
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.numberOfLines = 4
     }
     
-    //action
+    //Calendar 관련 action
+    @objc func presentCalendar() {
+        let pushVC = CalendarVC()
+        pushVC.modalPresentationStyle = .fullScreen
+        self.present(pushVC, animated: true)
+    }
+    
+    @objc func leftArrowAction() {
+        let yesterday = Date(timeIntervalSinceNow: -86400)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        requestDate = dateFormatter.string(from: yesterday)
+        getMeal()
+    }
+    
+    @objc func rightArrowAction() {
+        let tomorrow = Date(timeIntervalSinceNow: 86400)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        requestDate = dateFormatter.string(from: tomorrow)
+        getMeal()
+    }
+    
+    //급식 상세화면으로 이동하는 action
     @objc func getBreakfast() {
         let pushVC = MealVC()
         requestTime = "break"
@@ -133,25 +154,6 @@ class MainVC: UIViewController {
         let pushVC = MealVC()
         requestTime = "dinner"
         self.navigationController?.pushViewController(pushVC, animated: true)
-    }
-    
-    //Calendar 관련 action
-    @objc func presentCalendar() {
-        let pushVC = CalendarVC()
-        pushVC.modalPresentationStyle = .fullScreen
-        self.present(pushVC, animated: true)
-    }
-    
-    @objc func leftArrowAction() {
-        let pushVC = CalendarVC()
-        pushVC.modalPresentationStyle = .fullScreen
-        self.present(pushVC, animated: true)
-    }
-    
-    @objc func rightArrowAction() {
-        let pushVC = CalendarVC()
-        pushVC.modalPresentationStyle = .fullScreen
-        self.present(pushVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -171,6 +173,7 @@ class MainVC: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         
+        let date = Date()
         requestDate = dateFormatter.string(from: date)
     }
     
@@ -192,8 +195,6 @@ class MainVC: UIViewController {
                 case .success:
                     guard let value = response.value else { return }
                     guard let result = try? JSONDecoder().decode(MealData.self, from: value) else { return }
-                    
-                    let date = result.data.date.components(separatedBy: "-")
 
                     var breakfast = result.data.breakfast
                     var lunch = result.data.lunch
@@ -222,8 +223,8 @@ class MainVC: UIViewController {
             logo,
             dateButton,
             dateLabel,
-//            leftArrow,
-//            rightArrow,
+            leftArrow,
+            rightArrow,
             
             breakfastButton,
             morningImage,
@@ -245,29 +246,36 @@ class MainVC: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
-            $0.bottom.equalTo(logo.snp.top).offset(20)
+            $0.bottom.equalTo(logo.snp.top).offset(18)
         }
         
         dateButton.snp.makeConstraints {
             $0.top.equalTo(logo.snp.bottom).offset(10)
-            $0.left.equalToSuperview().offset(100)
-            $0.right.equalToSuperview().offset(-100)
+            $0.left.equalTo(leftArrow.snp.right)
+            $0.right.equalTo(rightArrow.snp.left)
             $0.bottom.equalTo(dateButton.snp.top).offset(40)
         }
+
+        leftArrow.snp.makeConstraints {
+            $0.top.equalTo(logo.snp.bottom).offset(10)
+            $0.left.equalToSuperview().offset(80)
+            $0.right.equalTo(leftArrow.snp.left).offset(40)
+            $0.bottom.equalTo(leftArrow.snp.top).offset(40)
+        }
         
+        rightArrow.snp.makeConstraints {
+            $0.top.equalTo(logo.snp.bottom).offset(10)
+            $0.left.equalTo(rightArrow.snp.right).offset(-40)
+            $0.right.equalToSuperview().offset(-80)
+            $0.bottom.equalTo(rightArrow.snp.top).offset(40)
+        }
+
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(dateButton.snp.top).offset(10)
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
             $0.bottom.equalTo(dateButton.snp.bottom).offset(-10)
         }
-        
-//        leftArrow.snp.makeConstraints {
-//            $0.top.equalTo(logo.snp.bottom).offset(10)
-//            $0.left.equalToSuperview()
-//            $0.right.equalTo(dateLabel.snp.left)
-//            $0.bottom.equalTo(dateButton.snp.top).offset(40)
-//        }
         
         //breakfast
         breakfastButton.snp.makeConstraints {
