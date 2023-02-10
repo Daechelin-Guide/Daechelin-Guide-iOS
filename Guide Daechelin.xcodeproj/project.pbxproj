@@ -13,6 +13,16 @@
 		52844E292991D5DA00621E67 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E282991D5DA00621E67 /* Data.swift */; };
 		52844E2B2991D94100621E67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E2A2991D94100621E67 /* extension.swift */; };
 		52844E302991ED5A00621E67 /* MealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52844E2F2991ED5A00621E67 /* MealVC.swift */; };
+		52C049CB2996347D00860336 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C22996347D00860336 /* Pretendard-Light.otf */; };
+		52C049CC2996347D00860336 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C32996347D00860336 /* Pretendard-ExtraLight.otf */; };
+		52C049CE2996347D00860336 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C52996347D00860336 /* Pretendard-Black.otf */; };
+		52C049CF2996347D00860336 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C62996347D00860336 /* Pretendard-Regular.otf */; };
+		52C049D02996347D00860336 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C72996347D00860336 /* Pretendard-SemiBold.otf */; };
+		52C049D12996347D00860336 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C82996347D00860336 /* Pretendard-Bold.otf */; };
+		52C049D22996347D00860336 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049C92996347D00860336 /* Pretendard-ExtraBold.otf */; };
+		52C049D32996347D00860336 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049CA2996347D00860336 /* Pretendard-Medium.otf */; };
+		52C049D82996356500860336 /* enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C049D72996356500860336 /* enum.swift */; };
+		52C049DA2996841E00860336 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C049D92996841E00860336 /* SettingVC.swift */; };
 		52CB17DE29926A4400E9DC6F /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB17DD29926A4400E9DC6F /* WriteVC.swift */; };
 		52CB17E029929D8900E9DC6F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB17DF29929D8900E9DC6F /* ReviewCell.swift */; };
 		52EA39E62991C9CB006D5738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA39E52991C9CB006D5738 /* AppDelegate.swift */; };
@@ -31,6 +41,16 @@
 		52844E282991D5DA00621E67 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		52844E2A2991D94100621E67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		52844E2F2991ED5A00621E67 /* MealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealVC.swift; sourceTree = "<group>"; };
+		52C049C22996347D00860336 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		52C049C32996347D00860336 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		52C049C52996347D00860336 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		52C049C62996347D00860336 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		52C049C72996347D00860336 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		52C049C82996347D00860336 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		52C049C92996347D00860336 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		52C049CA2996347D00860336 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		52C049D72996356500860336 /* enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
+		52C049D92996841E00860336 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		52CB17DD29926A4400E9DC6F /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
 		52CB17DF29929D8900E9DC6F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		52EA39E22991C9CB006D5738 /* Guide Daechelin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guide Daechelin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,11 +102,11 @@
 		52844E232991D0D300621E67 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				525A37082992652D008AC1B7 /* Model */,
 				52844E272991D5BD00621E67 /* Main */,
 				525A370329920B1F008AC1B7 /* Calender */,
 				52844E2E2991ED3700621E67 /* Mael */,
 				52CB17E12992A0EA00E9DC6F /* Write */,
+				52C049DB2996842100860336 /* Setting */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -96,7 +116,7 @@
 			children = (
 				52EA39E72991C9CB006D5738 /* SceneDelegate.swift */,
 				52EA39E52991C9CB006D5738 /* AppDelegate.swift */,
-				52844E2A2991D94100621E67 /* extension.swift */,
+				52C049D62996354800860336 /* extension, enum */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -116,6 +136,75 @@
 				52CB17DF29929D8900E9DC6F /* ReviewCell.swift */,
 			);
 			path = Mael;
+			sourceTree = "<group>";
+		};
+		52C049B329962E2A00860336 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52C049B829962EB600860336 /* Font */,
+				52C049B429962E5000860336 /* Assets */,
+				52EA39F02991C9CC006D5738 /* LaunchScreen.storyboard */,
+				52EA39F32991C9CC006D5738 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		52C049B429962E5000860336 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				52EA39EE2991C9CC006D5738 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		52C049B829962EB600860336 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				52C049D4299634DC00860336 /* Pretendard */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		52C049D4299634DC00860336 /* Pretendard */ = {
+			isa = PBXGroup;
+			children = (
+				52C049C52996347D00860336 /* Pretendard-Black.otf */,
+				52C049C82996347D00860336 /* Pretendard-Bold.otf */,
+				52C049C92996347D00860336 /* Pretendard-ExtraBold.otf */,
+				52C049C32996347D00860336 /* Pretendard-ExtraLight.otf */,
+				52C049C22996347D00860336 /* Pretendard-Light.otf */,
+				52C049CA2996347D00860336 /* Pretendard-Medium.otf */,
+				52C049C62996347D00860336 /* Pretendard-Regular.otf */,
+				52C049C72996347D00860336 /* Pretendard-SemiBold.otf */,
+			);
+			path = Pretendard;
+			sourceTree = "<group>";
+		};
+		52C049D52996350400860336 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				52844E242991D0DB00621E67 /* Application */,
+				525A37082992652D008AC1B7 /* Model */,
+				52844E232991D0D300621E67 /* Presentation */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		52C049D62996354800860336 /* extension, enum */ = {
+			isa = PBXGroup;
+			children = (
+				52844E2A2991D94100621E67 /* extension.swift */,
+				52C049D72996356500860336 /* enum.swift */,
+			);
+			path = "extension, enum";
+			sourceTree = "<group>";
+		};
+		52C049DB2996842100860336 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				52C049D92996841E00860336 /* SettingVC.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		52CB17E12992A0EA00E9DC6F /* Write */ = {
@@ -147,11 +236,8 @@
 		52EA39E42991C9CB006D5738 /* Guide Daechelin */ = {
 			isa = PBXGroup;
 			children = (
-				52844E242991D0DB00621E67 /* Application */,
-				52844E232991D0D300621E67 /* Presentation */,
-				52EA39EE2991C9CC006D5738 /* Assets.xcassets */,
-				52EA39F02991C9CC006D5738 /* LaunchScreen.storyboard */,
-				52EA39F32991C9CC006D5738 /* Info.plist */,
+				52C049B329962E2A00860336 /* Resources */,
+				52C049D52996350400860336 /* Sources */,
 			);
 			path = "Guide Daechelin";
 			sourceTree = "<group>";
@@ -226,7 +312,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				52EA39F22991C9CC006D5738 /* LaunchScreen.storyboard in Resources */,
+				52C049D22996347D00860336 /* Pretendard-ExtraBold.otf in Resources */,
 				52EA39EF2991C9CC006D5738 /* Assets.xcassets in Resources */,
+				52C049D02996347D00860336 /* Pretendard-SemiBold.otf in Resources */,
+				52C049CC2996347D00860336 /* Pretendard-ExtraLight.otf in Resources */,
+				52C049CF2996347D00860336 /* Pretendard-Regular.otf in Resources */,
+				52C049CE2996347D00860336 /* Pretendard-Black.otf in Resources */,
+				52C049D12996347D00860336 /* Pretendard-Bold.otf in Resources */,
+				52C049CB2996347D00860336 /* Pretendard-Light.otf in Resources */,
+				52C049D32996347D00860336 /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CB17DE29926A4400E9DC6F /* WriteVC.swift in Sources */,
+				52C049DA2996841E00860336 /* SettingVC.swift in Sources */,
 				52CB17E029929D8900E9DC6F /* ReviewCell.swift in Sources */,
 				52844E292991D5DA00621E67 /* Data.swift in Sources */,
+				52C049D82996356500860336 /* enum.swift in Sources */,
 				52844E262991D18200621E67 /* MainVC.swift in Sources */,
 				52844E302991ED5A00621E67 /* MealVC.swift in Sources */,
 				52844E2B2991D94100621E67 /* extension.swift in Sources */,
@@ -430,7 +526,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Guide Daechelin/Info.plist";
+				INFOPLIST_FILE = "Guide Daechelin/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "대슐랭 가이드";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -461,7 +557,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4CNC953L3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Guide Daechelin/Info.plist";
+				INFOPLIST_FILE = "Guide Daechelin/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "대슐랭 가이드";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

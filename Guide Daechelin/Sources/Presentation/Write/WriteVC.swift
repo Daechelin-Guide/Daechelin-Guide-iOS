@@ -15,7 +15,7 @@ class WriteVC: UIViewController {
     
     var menus:String = ""
     var comment:String = ""
-    var star:Double = 3.0
+    var star:Double = 0.0
     
     var cosmos = CosmosView()
     
@@ -155,7 +155,7 @@ class WriteVC: UIViewController {
         ].forEach{ self.view.addSubview($0) }
         
         commentTextView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
             $0.bottom.equalTo(commentTextView.snp.top).offset(84)
@@ -172,7 +172,7 @@ class WriteVC: UIViewController {
             $0.top.equalTo(commentTextView.snp.bottom).offset(6)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalTo(textCount.snp.left)
-            $0.bottom.equalTo(cosmos.snp.top).offset(20)
+            $0.bottom.equalTo(cosmos.snp.top).offset(28)
         }
         
         error.snp.makeConstraints {

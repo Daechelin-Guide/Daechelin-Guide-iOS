@@ -321,7 +321,7 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         ].forEach { self.view.addSubview($0) }
         
         backView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
             $0.bottom.equalTo(backView.snp.top).offset(260)

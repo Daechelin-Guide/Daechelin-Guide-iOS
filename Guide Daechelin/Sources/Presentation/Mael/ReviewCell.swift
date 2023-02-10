@@ -13,8 +13,6 @@ class ReviewCell: UITableViewCell {
     
     static let identifier = "ReviewCell"
     
-    var anonymous:[String] = ["거대한 곰돌이","소심한 드래곤","귀여운 송아지","활발한 강아지","규칙적인 대소고인","게으른 대소고인","키가 큰 대소고인","슬픈 대소고인","발랄한 대소고인","착한 대소고인","배부른 대소고인","사랑스러운 대소고인"]
-    
     let userIcon = UIImageView().then {
         $0.image = UIImage(named: "user")
     }
@@ -26,7 +24,7 @@ class ReviewCell: UITableViewCell {
     }
 
     let comment = UILabel().then {
-        $0.text = "테스트용 더미데이터로 댓글이 아닙니다"
+        $0.text = "댓글을 불러오는 중..."
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.textColor = .black
         $0.numberOfLines = 2
