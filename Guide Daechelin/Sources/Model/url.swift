@@ -7,7 +7,7 @@
 
 import Foundation
 
-public let url = "http://10.80.161.228:4000"
+public let url = "http://34.64.210.84:8080"
 
 public var requestDate = "정보를 불러오는 중..."
 

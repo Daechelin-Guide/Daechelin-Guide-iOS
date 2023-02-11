@@ -23,6 +23,7 @@
 		52C049D32996347D00860336 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52C049CA2996347D00860336 /* Pretendard-Medium.otf */; };
 		52C049D82996356500860336 /* enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C049D72996356500860336 /* enum.swift */; };
 		52C049DA2996841E00860336 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C049D92996841E00860336 /* SettingVC.swift */; };
+		52C049DF29975C4600860336 /* Final class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C049DE29975C4500860336 /* Final class.swift */; };
 		52CB17DE29926A4400E9DC6F /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB17DD29926A4400E9DC6F /* WriteVC.swift */; };
 		52CB17E029929D8900E9DC6F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB17DF29929D8900E9DC6F /* ReviewCell.swift */; };
 		52EA39E62991C9CB006D5738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA39E52991C9CB006D5738 /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		52C049CA2996347D00860336 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		52C049D72996356500860336 /* enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
 		52C049D92996841E00860336 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		52C049DE29975C4500860336 /* Final class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Final class.swift"; sourceTree = "<group>"; };
 		52CB17DD29926A4400E9DC6F /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
 		52CB17DF29929D8900E9DC6F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		52EA39E22991C9CB006D5738 /* Guide Daechelin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guide Daechelin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				52C049D92996841E00860336 /* SettingVC.swift */,
+				52C049DE29975C4500860336 /* Final class.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				52EA39E62991C9CB006D5738 /* AppDelegate.swift in Sources */,
 				52EA39E82991C9CB006D5738 /* SceneDelegate.swift in Sources */,
 				525A370529923413008AC1B7 /* url.swift in Sources */,
+				52C049DF29975C4600860336 /* Final class.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

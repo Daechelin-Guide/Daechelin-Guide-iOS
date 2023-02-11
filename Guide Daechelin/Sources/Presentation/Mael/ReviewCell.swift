@@ -19,14 +19,14 @@ class ReviewCell: UITableViewCell {
     
     let userName = UILabel().then {
         $0.text = "익명의 대소고인"
-        $0.font = .systemFont(ofSize: 14, weight: .medium)
-        $0.textColor = .black
+        $0.font = Pretendard.Medium(size: 14)
+        $0.textColor = .TextColor
     }
 
     let comment = UILabel().then {
         $0.text = "댓글을 불러오는 중..."
-        $0.font = .systemFont(ofSize: 12, weight: .regular)
-        $0.textColor = .black
+        $0.font = Pretendard.Regular(size: 12)
+        $0.textColor = .TextColor
         $0.numberOfLines = 2
     }
     

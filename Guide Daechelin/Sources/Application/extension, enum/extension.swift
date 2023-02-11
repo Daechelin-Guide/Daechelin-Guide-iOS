@@ -10,6 +10,8 @@ import UIKit
 public extension UIColor {
     
     class var buttonColor: UIColor? { return UIColor(named: "buttonColor") }
+    
+    class var TextColor: UIColor? { return UIColor(named: "TextColor") }
 }
 
 public extension UITextField {

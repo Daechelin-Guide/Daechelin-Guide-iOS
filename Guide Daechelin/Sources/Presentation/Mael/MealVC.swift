@@ -12,7 +12,6 @@ import Alamofire
 import Cosmos
 
 class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
     
     var comment:[CommentData] = []
     var massege:[String] = []
@@ -32,7 +31,8 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     private let dateLabel = UILabel().then {
         $0.text = "\(week)"
-        $0.font = .systemFont(ofSize: 20, weight: .medium)
+        $0.font = Pretendard.Medium(size: 18)
+        $0.textColor = .TextColor
         $0.textAlignment = .center
     }
     
@@ -65,6 +65,8 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     func GetMessage() {
         
+        massege = []
+        
         for row in comment {
             if row.message != "" {
                 massege.append(row.message!)
@@ -73,10 +75,20 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         print(massege)
     }
     
+    func GetStar() {
+        
+        cosmos.rating = Double(self.star)
+        cosmos.text = "\(String(format: "%.2f", self.star))"
+        
+    }
+    
     @objc func presentReview() {
         let pushVC = WriteVC()
-        self.navigationController?.pushViewController(pushVC, animated: true)
         pushVC.menus = menus
+        self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        let backBarButtonItem = UIBarButtonItem(title: "리뷰 달기", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     override func viewDidLoad() {
@@ -86,21 +98,15 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         self.reviewTableView.delegate = self
         self.reviewTableView.dataSource = self
         
-        getMeal()
         setup()
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as! ReviewCell
-        cell.selectionStyle = .none
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        cell.comment.text = "\(massege[indexPath.row])"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return massege.count
+        getMeal()
+        GetStar()
     }
     
     func getMeal() {
@@ -256,8 +262,6 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                                     guard let value = response.value else { return }
                                     guard let result = try? JSONDecoder().decode(StarData.self, from: value) else { return }
                                     self.star = Double(result.star ?? 0)
-                                    self.cosmos.rating = Double(self.star)
-                                    self.cosmos.text = "\(String(format: "%.2f", self.star))"
                                     print("별점 성공")
                                     
                                 case .failure:
@@ -367,11 +371,19 @@ class MealVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
             $0.right.equalTo(view.safeAreaLayoutGuide).offset(-16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
-        
-        let backBarButtonItem = UIBarButtonItem(title: "리뷰 달기", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as! ReviewCell
+        cell.selectionStyle = .none
+        
+        cell.comment.text = "\(massege[indexPath.row])"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return massege.count
+    }
     
 }
 

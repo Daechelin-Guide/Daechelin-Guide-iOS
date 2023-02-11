@@ -24,7 +24,7 @@ class WriteVC: UIViewController {
     private let commentTextView = UITextView().then {
         $0.text =  "리뷰를 작성해주세요."
         $0.textColor = UIColor(white: 0, alpha: 0.3)
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = Pretendard.Regular(size: 18)
         $0.backgroundColor = .buttonColor
         $0.layer.cornerRadius = 8
         $0.isScrollEnabled = false
@@ -32,14 +32,14 @@ class WriteVC: UIViewController {
     
     private let textCount = UILabel().then {
         $0.text = "0/50"
-        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.font = Pretendard.Medium(size: 14)
         $0.textColor = UIColor(white: 0, alpha: 0.3)
         $0.textAlignment = .right
     }
     
     private let error = UILabel().then {
         $0.text = "별점을 먼저 선택하시고 리뷰를 작성해주세요."
-        $0.font = .systemFont(ofSize: 14, weight: .medium)
+        $0.font = Pretendard.Medium(size: 14)
         $0.textColor = UIColor(white: 0, alpha: 0.3)
         $0.textAlignment = .left
     }
@@ -146,6 +146,7 @@ class WriteVC: UIViewController {
         cosmos.text = "\(star)"
         
         navigationItem.rightBarButtonItem = self.completButton
+
         
         [
             commentTextView,

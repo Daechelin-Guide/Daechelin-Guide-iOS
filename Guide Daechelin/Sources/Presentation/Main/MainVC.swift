@@ -20,8 +20,9 @@ class MainVC: UIViewController {
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "2023/12/25 화요일"
+        $0.text = "날짜를 불러오는 중..."
         $0.font = Pretendard.Medium(size: 20)
+        $0.textColor = .TextColor
         $0.textAlignment = .center
     }
     
@@ -42,6 +43,7 @@ class MainVC: UIViewController {
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.isEnabled = false
         $0.addTarget(self, action: #selector(getBreakfast), for: .touchUpInside)
     }
     
@@ -54,9 +56,9 @@ class MainVC: UIViewController {
     }
     
     private let breakfastMenu = UILabel().then {
-//        $0.text = "정보를 불러오는 중..."
-        $0.text = "쇠고기야채죽,*모닝빵크래미샌드위치,나박김치,허쉬초코크런치시리얼+우유, 바나나"
+        $0.text = "정보를 불러오는 중..."
         $0.font = Pretendard.Regular(size: 14)
+        $0.textColor = .TextColor
         $0.numberOfLines = 4
     }
     
@@ -67,6 +69,7 @@ class MainVC: UIViewController {
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.isEnabled = false
         $0.addTarget(self, action: #selector(getLunch), for: .touchUpInside)
     }
     
@@ -79,9 +82,9 @@ class MainVC: UIViewController {
     }
     
     private let lunchMenu = UILabel().then {
-//        $0.text = "정보를 불러오는 중..."
-        $0.text = "*현미밥,돔베고기국수,진미채무침,새우또띠아쌈,깍두기,멜론"
+        $0.text = "정보를 불러오는 중..."
         $0.font = Pretendard.Regular(size: 14)
+        $0.textColor = .TextColor
         $0.numberOfLines = 4
     }
     
@@ -92,6 +95,7 @@ class MainVC: UIViewController {
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.isEnabled = false
         $0.addTarget(self, action: #selector(getDinner), for: .touchUpInside)
     }
     
@@ -104,9 +108,9 @@ class MainVC: UIViewController {
     }
     
     private let dinnerMenu = UILabel().then {
-//        $0.text = "정보를 불러오는 중..."
-        $0.text = "*기장밥,닭개장,시금치무침,*통모짜돈까스+소스,배추김치,진한사과주스"
+        $0.text = "정보를 불러오는 중..."
         $0.font = Pretendard.Regular(size: 14)
+        $0.textColor = .TextColor
         $0.numberOfLines = 4
     }
     
@@ -155,9 +159,17 @@ class MainVC: UIViewController {
                     var lunch = result.data.lunch
                     var dinner = result.data.dinner
                     
-                    if breakfast == nil { breakfast = "조식이 없습니다." }
-                    if lunch == nil { lunch = "중식이 없습니다." }
-                    if dinner == nil { dinner = "석식이 없습니다." }
+                    if breakfast == nil {
+                        breakfast = "조식이 없습니다."
+                    } else { self.breakfastButton.isEnabled = true }
+                    
+                    if lunch == nil {
+                        lunch = "중식이 없습니다."
+                    } else { self.lunchButton.isEnabled = true }
+                    
+                    if dinner == nil {
+                        dinner = "석식이 없습니다."
+                    } else { self.dinnerButton.isEnabled = true }
                     
                     week = result.data.week!
                     self.dateLabel.text = "\(week)"
@@ -167,21 +179,26 @@ class MainVC: UIViewController {
                     self.dinnerMenu.text = "\(dinner!)"
                     
                 case .failure:
-                    print("failed")
+                    
+                    let alert = UIAlertController(title: "오류", message: "서버 연결에 실패하였습니다.", preferredStyle: UIAlertController.Style.alert)
+                    let okButton = UIAlertAction(title: "확인", style: .default) { (action) in print("실패")
+                    }
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true)
                 }
             }
     }
     
     func setNavigationBar() {
-        
+
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = .systemBackground
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         navigationController?.navigationBar.isTranslucent = false
 
-        
-        let logoImage = UIImage.init(named: "MTMLogo2")
+
+        let logoImage = UIImage.init(named: "Logo")
         let logoImageView = UIImageView.init(image: logoImage)
         logoImageView.frame = CGRect(x:0.0,y:0.0, width:120,height:50.0)
         logoImageView.contentMode = .scaleAspectFit
@@ -191,29 +208,22 @@ class MainVC: UIViewController {
         heightConstraint.isActive = true
         widthConstraint.isActive = true
         navigationItem.leftBarButtonItem = imageItem
-        
+
         let bellButtonImage = UIImage(systemName: "gearshape")!
         let bellButton = UIButton(frame: CGRect(x: 0, y: 0, width: bellButtonImage.size.width, height: bellButtonImage.size.height))
         bellButton.setImage(bellButtonImage, for: .normal)
         bellButton.addTarget(self, action: #selector(presentSetting), for: .touchUpInside)
         
-        let searchButtonImage = UIImage(systemName: "star")!
-        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: searchButtonImage.size.width, height: searchButtonImage.size.height))
-        searchButton.setImage(searchButtonImage, for: .normal)
-        searchButton.addTarget(self, action: #selector(presentRank), for: .touchUpInside)
-        
         let bellBarButton = UIBarButtonItem(customView: bellButton)
-        let searchBarButton = UIBarButtonItem(customView: searchButton)
-        
-        self.navigationItem.rightBarButtonItems = [bellBarButton, searchBarButton]
-        
+
+        self.navigationItem.rightBarButtonItems = [bellBarButton]
+
         var configuration = UIButton.Configuration.plain()
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0)
 
         bellButton.configuration = configuration
-        searchButton.configuration = configuration
-        
-    
+
+
     }
     
     
@@ -356,9 +366,6 @@ class MainVC: UIViewController {
             $0.bottom.equalTo(dinnerButton.snp.bottom).offset(-30)
         }
         
-        let backBarButtonItem = UIBarButtonItem(title: "급식 상세 정보", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-        
     }
     
 }
@@ -397,27 +404,37 @@ extension MainVC {
         let pushVC = MealVC()
         requestTime = "break"
         self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        let backBarButtonItem = UIBarButtonItem(title: "조식 상세 정보", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     @objc func getLunch() {
         let pushVC = MealVC()
         requestTime = "lunch"
         self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        let backBarButtonItem = UIBarButtonItem(title: "중식 상세 정보", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     @objc func getDinner() {
         let pushVC = MealVC()
         requestTime = "dinner"
         self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        let backBarButtonItem = UIBarButtonItem(title: "석식 상세 정보", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     //네비게이션바 버튼 action
-    @objc func presentRank() {
-        print("랭크")
-    }
     
     @objc func presentSetting() {
-        print("세팅")
+        let pushVC = SettingVC()
+        self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        let backBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     
